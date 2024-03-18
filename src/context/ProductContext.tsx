@@ -1,11 +1,12 @@
 import { createContext } from "react";
 import { Product } from "../interfaces/ProductInterface";
+import { UseMutationResult } from "@tanstack/react-query";
 
 export interface ProductContextData {
   data: { myName: string; myAge: number };
-  addToCart: (product: Product) => void;
+  AddProductMutation: UseMutationResult<Product[], Error, Product, unknown>;
+  RemoveProductMutation: UseMutationResult<Product[], Error, number, unknown>;
   products: Product[];
-  removeProduct: (productId: number) => void
 }
 
 const ProductContext = createContext<ProductContextData | null>(null);

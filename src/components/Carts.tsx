@@ -4,7 +4,7 @@ import { Product } from "../interfaces/ProductInterface";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
 export default function Carts() {
-  const { products, removeProduct } = UserProductsState();
+  const { products, RemoveProductMutation } = UserProductsState();
   return (
     <section className="min-h-screen bg-slate-800 py-8 px-4 text-white">
       <h1 className="text-yellow-400 text-center">{products?.length < 1 && "You dont' have Products on your cart"}</h1>
@@ -28,7 +28,7 @@ export default function Carts() {
               <p className="line-clamp-1 mb-4">{item.description}</p>
               <div className="flex justify-between items-center">
                 <span className="">${item.price}</span>
-                <div onClick={() => removeProduct(item.id)}  className="flex gap-3 bg-red-800 text-white px-4 py-2 rounded-md hover:bg-red-500 cursor-pointer focus:outline-none focus:bg-blue-600">
+                <div onClick={() => RemoveProductMutation.mutate(item.id)}  className="flex gap-3 bg-red-800 text-white px-4 py-2 rounded-md hover:bg-red-500 cursor-pointer focus:outline-none focus:bg-blue-600">
                   <RiDeleteBin6Fill size={25} color="white" />
                   <p>Remove</p>
                 </div>

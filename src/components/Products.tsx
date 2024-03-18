@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Link } from "react-router-dom";
 import { Product } from "../interfaces/ProductInterface";
 import { useQuery } from "@tanstack/react-query";
 import { UserProductsState } from "../context/ProductState";
 
 export default function Products() {
-  const { addToCart } = UserProductsState();
+  const { AddProductMutation } = UserProductsState();
 
   const fetchProducts = async () => {
     const response = await fetch("https://dummyjson.com/products");
@@ -54,7 +53,7 @@ export default function Products() {
                 <div className="flex justify-between items-center">
                   <span className="">${item.price}</span>
                   <button
-                    onClick={() => addToCart(item)}
+                    onClick={() => AddProductMutation.mutate(item)}
                     className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
                   >
                     Add to Cart
